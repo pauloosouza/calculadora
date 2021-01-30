@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Armata&display=swap" rel="stylesheet">
+  <title>Calculadora</title>
+  <style>
+    * {
+      font-size: 20px;
+      font-family: 'Armata', sans-serif;
+    }
+  
+    .display {
+      background-color: #FFF;
+      height: 150px;
+    }
+
+    .calculator {
+      height: 500px;
+      width: 350px;
+      border: 1px solid black;
+      background-color: gray;
+    }
+
+    .keyboard {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 350px;
+    }
+
+    .keyboard ul {
+      height: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: #434343;
+      padding: 0px;
+    }
+
+    .keyboard button {
+      background-color: transparent;
+      border: none;
+      color: #FFF;
+      width: inherit;
+      height: inherit;
+      cursor: pointer;
+    }
+
+    .keyboard ul li {
+      width: 87.5px;
+      height: 87.5px;
+      list-style: none;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .keyboard .commands {
+      background-color: #636363;
+    }
+
+    .display {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .display span {
+      margin-right: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <div class="display">
+      <span>0</span>
+    </div>
+    
+    <div class="keyboard">
+      <ul>
+        <li><button>7</button></li>
+        <li><button>4</button></li>
+        <li><button>1</button></li>
+        <li><button>.</button></li>
+      </ul>
+
+      <ul>
+        <li><button>8</button></li>
+        <li><button>5</button></li>
+        <li><button>2</button></li>
+        <li><button>0</button></li>
+      </ul>
+
+      <ul>
+        <li><button>9</button></li>
+        <li><button>6</button></li>
+        <li><button>3</button></li>
+        <li><button class="equal">=</button></li>
+      </ul>
+
+      <ul class="commands">
+        <li><button>c</button></li>
+        <li><button>/</button></li>
+        <li><button>*</button></li>
+        <li><button>-</button></li>
+        <li><button>+</button></li>
+      </ul>
+    </div>
+  </div>
+  <script>
+    let display = ''
+    displayElement = document.querySelector(".display span");
+
+    const button = document.querySelectorAll("button:not(.equal)");
+
+    button.forEach(button => button.addEventListener("click", event => {
+      display += event.target.innerHTML
+    
+      displayElement.innerHTML = display
+    }));
+
+    equal = document.querySelector(".equal");
+
+    equal.addEventListener('click', (event) => {
+      displayElement.innerHTML = eval(display)
+    })
+  </script>
+</body>
+</html>
